@@ -54,7 +54,6 @@
     (mc/remove db "games"))
   (game [this id]
     (when-let [game (mc/find-one-as-map db "games" {:_id (ObjectId. id)})]
-      (println "GAEM" game)
       (-> game (assoc ::game/id id) (dissoc :_id))))
   (games [this]
     (map prepare (mc/find-maps db "games")))
